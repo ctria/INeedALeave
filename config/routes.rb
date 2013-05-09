@@ -1,4 +1,6 @@
 INeedALeave::Application.routes.draw do
+  resources :skills
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
