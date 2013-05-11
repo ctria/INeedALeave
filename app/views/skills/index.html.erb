@@ -3,8 +3,9 @@
 <table>
   <thead>
     <tr>
-      <th>Name</th>
       <th>Skill type</th>
+      <th>Name</th>
+      <th>Capacity</th>
       <th>Min coverage</th>
       <th></th>
       <th></th>
@@ -15,8 +16,9 @@
   <tbody>
     <% @skills.each do |skill| %>
       <tr>
-        <td><%= skill.name %></td>
         <td><%= skill.skill_type %></td>
+        <td><%= skill.name %></td>
+        <td><div title="<%= skill.members.collect{|mbr| mbr.ircnick }.join(",") %>"><%= skill.capacity %></div></td>
         <td><%= skill.min_coverage %></td>
         <td><%= link_to 'Show', skill %></td>
         <td><%= link_to 'Edit', edit_skill_path(skill) %></td>

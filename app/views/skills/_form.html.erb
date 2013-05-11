@@ -12,12 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.label :skill_type %><br>
+    <%= select_tag(:skill_type, options_for_select([['Language'], ['SBR']], @skill.skill_type)) %>
   </div>
   <div class="field">
-    <%= f.label :skill_type %><br>
-    <%= f.text_field :skill_type %>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
   </div>
   <div class="field">
     <%= f.label :min_coverage %><br>
