@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  requestor: MyString
+  date: 2013-05-11
+  leave_type: MyString
+  status: MyString
+
+two:
+  requestor: MyString
+  date: 2013-05-11
+  leave_type: MyString
+  status: MyString

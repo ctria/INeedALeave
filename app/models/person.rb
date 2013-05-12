@@ -12,6 +12,10 @@ class Person < ActiveResource::Base
     self.where(:language=>lang)
   end
 
+  def self.find_by_email(email)
+    self.where(:email=>email)[0]
+  end
+
   def sbrs
     super.split(",")
   end
