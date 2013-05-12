@@ -21,11 +21,11 @@
   </div>
   <div class="field">
     <%= f.label :leave_type %><br>
-    <%= select_tag(:leave_type, options_for_select([['Full day'], ['Half day morning'],['Half day afternoon']], @leave_request.leave_type)) %>
+    <%= select_tag("leave_request[leave_type]", options_for_select([['Full day'], ['Half day morning'],['Half day afternoon']], @leave_request.leave_type)) %>
   </div>
   <div class="field">
     <%= f.label :status %><br>
-    <%= select_tag(:status, options_for_select([['Requested'], ['Covered'],['Approved'],['Rejected']], @leave_request.status)) %>
+    <%= select_tag("leave_request[status]", options_for_select([['Requested'], ['Covered'],['Approved'],['Rejected']], @leave_request.status)) %>
   </div>
 
   <div class="actions">
