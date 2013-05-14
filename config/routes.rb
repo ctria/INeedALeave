@@ -1,4 +1,8 @@
 INeedALeave::Application.routes.draw do
+  resources :sessions do
+    get "login" => "sessions#login", as: :login
+  end
+
   resources :leave_requests
 
   resources :skills
@@ -7,7 +11,7 @@ INeedALeave::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'skills#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  email: MyString
+  session_hash: MyString
+
+two:
+  email: MyString
+  session_hash: MyString

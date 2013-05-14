@@ -11,13 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130511210948) do
+ActiveRecord::Schema.define(version: 20130512210510) do
 
   create_table "leave_requests", force: true do |t|
     t.string   "requestor"
     t.date     "date"
     t.string   "leave_type"
     t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sessions", force: true do |t|
+    t.string   "email"
+    t.string   "session_hash"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
