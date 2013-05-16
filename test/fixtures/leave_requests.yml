@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  requestor: MyString
+  requestor: user1@example.com
   date: 2013-05-11
-  leave_type: MyString
-  status: MyString
+  leave_type: Full day
+  status: Requested
 
 two:
-  requestor: MyString
+  requestor: user2@example.com
   date: 2013-05-11
-  leave_type: MyString
-  status: MyString
+  leave_type: Full day
+  status: Requested

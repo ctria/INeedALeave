@@ -18,7 +18,7 @@ class LeaveRequestsControllerTest < ActionController::TestCase
 
   test "should create leave_request" do
     assert_difference('LeaveRequest.count') do
-      post :create, leave_request: { date: @leave_request.date, leave_type: @leave_request.leave_type, requestor: @leave_request.requestor, status: @leave_request.status }
+      post :create, leave_request: { date: @leave_request.date + 1, leave_type: @leave_request.leave_type, requestor: @leave_request.requestor, status: @leave_request.status }
     end
 
     assert_redirected_to leave_request_path(assigns(:leave_request))
@@ -35,7 +35,7 @@ class LeaveRequestsControllerTest < ActionController::TestCase
   end
 
   test "should update leave_request" do
-    patch :update, id: @leave_request, leave_request: { date: @leave_request.date, leave_type: @leave_request.leave_type, requestor: @leave_request.requestor, status: @leave_request.status }
+    patch :update, id: @leave_request, leave_request: { date: @leave_request.date + 1, leave_type: @leave_request.leave_type, requestor: @leave_request.requestor, status: @leave_request.status }
     assert_redirected_to leave_request_path(assigns(:leave_request))
   end
 
