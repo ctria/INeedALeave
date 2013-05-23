@@ -1,33 +1,28 @@
+<script>
+    $(document).ready(function() {
+
+        // page is now ready, initialize the calendar...
+
+        $('#calendar').fullCalendar({
+            height: 650,
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,agendaWeek,agendaDay'
+            },
+            eventSources: [{
+                url: '/leave_requests',
+                textColor: 'black',
+                ignoreTimezone: false
+            }],
+        })
+    });
+</script>
+
 <h1>Listing leave_requests</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Requestor</th>
-      <th>Date</th>
-      <th>Leave type</th>
-      <th>Status</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @leave_requests.each do |leave_request| %>
-      <tr>
-        <td><%= leave_request.requestor %></td>
-        <td><%= leave_request.date %></td>
-        <td><%= leave_request.leave_type %></td>
-        <td><%= leave_request.status %></td>
-        <td><%= link_to 'Show', leave_request %></td>
-        <td><%= link_to 'Edit', edit_leave_request_path(leave_request) %></td>
-        <td><%= link_to 'Destroy', leave_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
+<div>
+  <div id='calendar'></div>
+</div>
 
 <%= link_to 'New Leave request', new_leave_request_path %>
