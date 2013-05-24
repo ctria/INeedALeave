@@ -6,7 +6,7 @@ class SkillTest < ActiveSupport::TestCase
   # end
   test "All skills fulfill min coverage" do
     Skill.all.each {|skill|
-      assert skill.is_covered?(nil), "Skill " + skill.skill_type + ": " + skill.name + " doesn't fulfill min coverage"
+      assert skill.is_covered?, "Skill " + skill.skill_type + ": " + skill.name + " doesn't fulfill min coverage"
     }
   end
 end

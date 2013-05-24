@@ -18,10 +18,10 @@ class Skill < ActiveRecord::Base
     members.count
   end
 
-  def available_members(date)
+  def available_members(date,person=nil)
     available_members =[]
     people_out=[]
-    out_of_office_members = 0
+    people_out << person.email if !person.nil?
     LeaveRequest.where(:date=>date).where('Status != "Rejected"').each { |leave|
       people_out << leave.requestor
     }
@@ -35,9 +35,12 @@ class Skill < ActiveRecord::Base
     available_members
   end
 
-  def is_covered?(date)
-    if capacity > min_coverage
-      if  available_members(date).count > min_coverage
+  # is_covered? -> checks if skill is covered based on skill capacity
+  # is_covered?(date) -> checks if skill is covered based a specific date
+  # is_covered?(date,person) -> checks if skill is covered based a specific date and makes sure that person will be out
+  def is_covered?(date=nil,person=nil)
+    if capacity >= min_coverage
+      if  available_members(date,person).count >= min_coverage
         true
       else
         false
