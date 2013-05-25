@@ -16,6 +16,7 @@ class LeaveRequestsController < ApplicationController
   # GET /leave_requests/new
   def new
     @leave_request = LeaveRequest.new
+    @leave_request.requestor = current_user.email
   end
 
   # GET /leave_requests/1/edit
@@ -26,6 +27,7 @@ class LeaveRequestsController < ApplicationController
   # POST /leave_requests.json
   def create
     @leave_request = LeaveRequest.new(leave_request_params)
+    @leave_request.requestor = current_user.email
 
     respond_to do |format|
       if @leave_request.save
@@ -70,6 +72,6 @@ class LeaveRequestsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def leave_request_params
-      params.require(:leave_request).permit(:requestor, :date, :leave_type, :status)
+      params.require(:leave_request).permit(:date, :leave_type, :status)
     end
 end
