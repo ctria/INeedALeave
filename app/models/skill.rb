@@ -22,7 +22,7 @@ class Skill < ActiveRecord::Base
     available_members =[]
     people_out=[]
     people_out << person.email if !person.nil?
-    LeaveRequest.where(:date=>date).where('Status != "Rejected"').each { |leave|
+    LeaveRequest.where(:date=>date).where("Status != ?", "Rejected").each { |leave|
       people_out << leave.requestor
     }
     if people_out.count > 0 then
