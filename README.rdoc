@@ -2,7 +2,7 @@
 
 == I Need A Leave
 
-This leave planning application.
+This is a leave planning application.
 
 The idea is to cover a workflow where in order to request a leave you need verify with your colleagues with the
 same skills as you that your skills are covered and your manager has to approve it.
