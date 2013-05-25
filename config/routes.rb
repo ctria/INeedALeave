@@ -2,6 +2,7 @@ INeedALeave::Application.routes.draw do
   resources :sessions do
     get "login" => "sessions#login", as: :login
   end
+  get "logout" => "sessions#logout", as: :logout
 
   resources :leave_requests
 

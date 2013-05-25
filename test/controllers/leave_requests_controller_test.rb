@@ -3,6 +3,7 @@ require 'test_helper'
 class LeaveRequestsControllerTest < ActionController::TestCase
   setup do
     @leave_request = leave_requests(:one)
+    session[:user] = Person.find_by_email("user1@example.com")
   end
 
   test "should get index" do

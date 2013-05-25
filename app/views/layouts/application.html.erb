@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>INeedALeave</title>
+  <title>I need a leave</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= stylesheet_link_tag    "fullcalendar", media: "all", "data-turbolinks-track" => true %>
   <%= stylesheet_link_tag    "fullcalendar.print", media: "all", "data-turbolinks-track" => true %>
@@ -9,7 +9,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<div id="header">
+  <%=
+      if current_user then
+        raw("You have logged in as: " + current_user.email + ", " + link_to("logout",logout_path))
+      else
+        link_to("login", new_session_path)
+      end
+  %>
+</div>
 <%= yield %>
 
 </body>

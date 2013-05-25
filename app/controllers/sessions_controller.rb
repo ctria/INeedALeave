@@ -11,18 +11,24 @@ class SessionsController < ApplicationController
     my_session.save
 
     Notifications.new_session(my_session.email,my_session.session_hash).deliver
-    redirect_to root_url, notice: 'Session hash has been sent to your email'
+    redirect_to root_path, notice: 'Session hash has been sent to your email'
   end
 
   def login
     my_session = Session.where(:session_hash=> params[:session_id])[0]
-    print my_session.email
-    if my_session && @current_user = Person.find_by_email(my_session.email)
-      notice = 'You have logged in as: ' + @current_user.name
+    if my_session && user = Person.find_by_email(my_session.email)
+      notice = 'You have logged in as: ' + user.name
+      session[:user] = user
     else
       notice = 'This session hash was not found or it is no longer valid'
     end
-    redirect_to root_url, notice: notice
+    redirect_to root_path, notice: notice
+  end
+
+  def logout
+    session[:user] = nil
+    flash[:message] = 'Logged out'
+    redirect_to root_path
   end
 
   private

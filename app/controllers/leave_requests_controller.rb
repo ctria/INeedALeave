@@ -1,4 +1,5 @@
 class LeaveRequestsController < ApplicationController
+  before_filter :login_required, :only=>[:new, :edit, :create, :update, :destroy]
   before_action :set_leave_request, only: [:show, :edit, :update, :destroy]
 
   # GET /leave_requests
