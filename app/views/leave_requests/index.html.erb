@@ -15,6 +15,55 @@
                 textColor: 'black',
                 ignoreTimezone: false
             }],
+            selectable: <%=!current_user.nil?%>,
+            selectHelper: true,
+
+            select: function(start, end, allDay) {
+                //alert(start);
+                //$(".popup").show();
+                //$(".title").focus();
+                var start = new Date(start); //Date.parse(start) / 1000;
+                var end = new Date(end); //Date.parse(end) / 1000;
+                var allDay = allDay;
+                //$("#add_leave_request")
+                var NewDialog = $(
+                    '<div id="add_leave_request" title="Request Leave">' +
+                        '<p>Request a leave from:</p>' +
+                        '<p>' + start.toDateString() + '</p>' +
+                        '<p>till:</p>' +
+                        '<p>' + end.toDateString() + '</p>' +
+                    '</div>'
+                );
+                NewDialog.dialog(
+                    {
+                        height: 300,
+                        width: 350,
+                        modal: true,
+                        buttons: {
+                            "Request it!": function() {
+                                $.post("<%=leave_requests_path + '.json' %>",{leave_request:{date:start,leave_type:"Full day"}})
+                                        .fail(function(xhr, textStatus, errorThrown) {
+                                            //TODO ugly but works for now
+                                            msg=""
+                                            $.each(jQuery.parseJSON(xhr.responseText), function(key, val) {
+                                                msg =msg +  (val + '\n');
+                                            });
+                                            alert(msg);
+                                        });
+                                $( this ).dialog( "close" );
+                            },
+                            Cancel: function() {
+                                $( this ).dialog( "close" );
+                            }
+                        },
+                        close: function() {
+                            $('#calendar').fullCalendar( 'refetchEvents' );
+                        }
+
+                    }
+                );
+
+            }
         })
     });
 </script>
@@ -24,5 +73,3 @@
 <div>
   <div id='calendar'></div>
 </div>
-
-<%= link_to 'New Leave request', new_leave_request_path %>

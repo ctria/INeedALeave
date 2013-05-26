@@ -28,6 +28,7 @@ class LeaveRequestsController < ApplicationController
   def create
     @leave_request = LeaveRequest.new(leave_request_params)
     @leave_request.requestor = current_user.email
+    @leave_request.status = "Requested"
 
     respond_to do |format|
       if @leave_request.save
